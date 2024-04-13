@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Input from "./Input";
+import Button from "../../components/formComponents/Button";
+import Input from "../../components/formComponents/Input";
 
 const NewCustomerForm = () => {
   return (

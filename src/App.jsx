@@ -1,8 +1,8 @@
 import Container from "./components/Container";
 import Header from "./components/Header";
-import UserAccount from "./components/userAccount/UserAccount";
-import NewCustomerForm from "./components/formComponents/NewCustomerForm";
-import AccountOpration from "./components/formComponents/AccountOpration";
+import NewCustomerForm from "./features/customers/NewCustomerForm";
+import AccountOpration from "./features/accounts/AccountOpration";
+import CustomerWelcom from "./features/customers/CustomerWelcom";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Container>
         <NewCustomerForm />
       </Container>
-      <UserAccount customerName={"ali"} />
+      <CustomerWelcom customerName={"ali"} />
       <Container>
         <AccountOpration />
       </Container>

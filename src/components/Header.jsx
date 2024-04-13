@@ -1,4 +1,4 @@
-import AccountBalance from "./AccountBalance";
+import AccountBalance from "../features/accounts/AccountBalance";
 import Logo from "./Logo";
 
 const Header = () => {

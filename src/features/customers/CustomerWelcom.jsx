@@ -1,4 +1,4 @@
-const UserAccount = ({ customerName }) => {
+const CustomerWelcom = ({ customerName }) => {
   return (
     <>
       <h2 className="text-lg font-bold">🖐 welcome {customerName} </h2>
@@ -6,4 +6,4 @@ const UserAccount = ({ customerName }) => {
   );
 };
 
-export default UserAccount;
+export default CustomerWelcom;
