@@ -1,5 +1,5 @@
 const accountInitialState = {
-  balance: 0,
+  balance: 20,
   loan: 0,
   loanPurpose: "",
 };
@@ -36,27 +36,27 @@ export default accountReducer;
 
 // ****************Action Creators
 
-const deposit = (amount) => {
+export const deposit = (amount) => {
   return { type: "account/deposit", payload: amount };
 };
-export { deposit };
+// export { deposit };
 
-const withdraw = (amount) => {
+export const withdraw = (amount) => {
   return { type: "account/withdraw", payload: amount };
 };
-export { withdraw };
+// export { withdraw };
 
-const requestLoan = (amount, purpose) => {
+export const requestLoan = (amount, purpose) => {
   return { type: "account/requestLoan", payload: { amount, purpose } };
 };
-export { requestLoan };
+// export { requestLoan };
 
-const payLoan = () => {
+export const payLoan = () => {
   return {
     type: "account/payLoan",
   };
 };
-export { payLoan };
+// export { payLoan };
 
 // store.dispatch(deposit(800));
 // store.dispatch(withdraw(500));

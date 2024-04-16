@@ -6,7 +6,7 @@ const customerInitialState = {
 
 // *********************Reducer
 
-const customerReducer = (state = customerInitialState, action) => {
+export const customerReducer = (state = customerInitialState, action) => {
   switch (action.type) {
     case "customer/createCustomer":
       return {
@@ -28,22 +28,22 @@ export default customerReducer;
 
 // ******************Action creators
 
-const createCustomer = (fullName, nationalID) => {
+export const createCustomer = (fullName, nationalID) => {
   return {
     type: "customer/createCustomer",
     payload: { fullName, nationalID, createdAt: new Date().toISOString() },
   };
 };
-export { createCustomer };
+// export { createCustomer };
 
-const updateName = (fullName) => {
+export const updateName = (fullName) => {
   return {
     type: "customer/updateName",
     payload: fullName,
   };
 };
 
-export { updateName };
+// export { updateName };
 
 // store.dispatch(createCustomer("ali", 443251));
 // store.dispatch(updateName("mohammad"));

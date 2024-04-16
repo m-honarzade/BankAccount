@@ -5,26 +5,25 @@ import { deposit, payLoan, requestLoan, withdraw } from "./AccountSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const AccountOpration = () => {
-  const [depositValue, setDepositValue] = useState(30);
+  const [depositValue, setDepositValue] = useState("");
   const [withdrawValue, setWithdrawValue] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
   const [loanAmout, setLoanAmount] = useState("");
   const [currency, setCurrency] = useState("USD");
-  const account = useSelector((store) => store.account);
+
+  console.log(typeof depositValue);
+
   const dispatch = useDispatch();
-  const depo = depositValue;
 
-  console.log(depo);
+  const account = useSelector((store) => store.account);
 
-  function depositHandler(depo) {
-    console.log(depo);
-    // if (!depositValue) return;
-    // dispatch(deposit(depositValue));
-    // setDepositValue("");
+  function depositHandler(depositValue) {
+    if (!depositValue) return;
+    dispatch(deposit(depositValue));
+    setDepositValue("");
   }
   const withdrawHandler = (withdrawValue) => {
     if (!withdrawValue) return;
-    // const withd = String(withdrawValue);
     dispatch(withdraw(withdrawValue));
     setWithdrawValue("");
   };
@@ -46,48 +45,34 @@ const AccountOpration = () => {
       </h2>
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-1">
-          <div className="flex flex-row gap-2 text-sm">
-            <label htmlFor="deposit">deposit</label>
-            <input
-              type="number"
-              id="deposit"
-              value={depositValue}
-              onChange={(e) => {
-                // console.log(+e.target.value);
-                setDepositValue(+e.target.value);
-              }}
-              className="border border-[#bdbcbc] p-1"
-            />
-          </div>
+          <Input
+            label="Deposit"
+            id="Deposit"
+            type="number"
+            value={depositValue}
+            setValue={setDepositValue}
+          />
           <select
             value={currency}
-            onChange={(e) => {
-              setCurrency(e.target.value);
-            }}
+            onChange={(e) => setCurrency(e.target.value)}
             className="border border-[#bdbcbc] text-sm"
           >
             <option value="USD">US Dollar</option>
             <option value="EUR">Euro</option>
             <option value="GBP">British Pound</option>
           </select>
-          <button
-            onClick={depositHandler}
-            className="rounded-sm px-2 py-1 text-xs font-semibold uppercase bg-[#bdbcbc] border border-[#838181]"
-          >
+          <Button type="button" clickHandler={depositHandler}>
             deposit
-          </button>
+          </Button>
         </div>
         <div className="flex flex-row gap-1">
-          <div className="flex flex-row gap-2 text-sm">
-            <label htmlFor="withdraw">withdraw</label>
-            <input
-              type="number"
-              id="withdraw"
-              value={withdrawValue}
-              onChange={(e) => setWithdrawValue(e)}
-              className="border border-[#bdbcbc] p-1"
-            />
-          </div>
+          <Input
+            label={"Withdraw"}
+            id={"Withdraw"}
+            type={"number"}
+            value={withdrawValue}
+            setValue={setWithdrawValue}
+          />
 
           <Button clickHandler={withdrawHandler}>Withdraw</Button>
         </div>

@@ -31,7 +31,7 @@ const NewCustomerForm = () => {
           value={nationalId}
           setValue={setNationalId}
         />
-        <Button>create new customer</Button>
+        <Button type="submit">create new customer</Button>
       </form>
     </>
   );

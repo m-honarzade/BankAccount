@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from "redux";
 import customerReducer from "../features/customers/CustomerSlice";
 import accountReducer from "../features/accounts/AccountSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const rootReducer = combineReducers({
   customer: customerReducer,
