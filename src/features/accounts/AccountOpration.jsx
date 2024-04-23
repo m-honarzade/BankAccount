@@ -5,26 +5,27 @@ import { deposit, payLoan, requestLoan, withdraw } from "./AccountSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const AccountOpration = () => {
-  const [depositValue, setDepositValue] = useState(30);
+  const [depositValue, setDepositValue] = useState("");
   const [withdrawValue, setWithdrawValue] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
   const [loanAmout, setLoanAmount] = useState("");
   const [currency, setCurrency] = useState("USD");
   const account = useSelector((store) => store.account);
+  const { balance, loan, CurrentLoanPurpose, isLoading } = account;
   const dispatch = useDispatch();
-  const depo = depositValue;
+  // const depo = depositValue;
 
-  console.log(depo);
+  // console.log(depo);
 
-  function depositHandler(depo) {
-    console.log(depo);
-    // if (!depositValue) return;
-    // dispatch(deposit(depositValue));
-    // setDepositValue("");
+  function depositHandler(depositValue) {
+    if (!depositValue) return;
+    dispatch(deposit(depositValue, currency));
+    setDepositValue("");
+    setCurrency("");
   }
   const withdrawHandler = (withdrawValue) => {
     if (!withdrawValue) return;
-    // const withd = String(withdrawValue);
+
     dispatch(withdraw(withdrawValue));
     setWithdrawValue("");
   };
@@ -53,7 +54,6 @@ const AccountOpration = () => {
               id="deposit"
               value={depositValue}
               onChange={(e) => {
-                // console.log(+e.target.value);
                 setDepositValue(+e.target.value);
               }}
               className="border border-[#bdbcbc] p-1"
@@ -71,10 +71,11 @@ const AccountOpration = () => {
             <option value="GBP">British Pound</option>
           </select>
           <button
+            disabled={isLoading}
             onClick={depositHandler}
             className="rounded-sm px-2 py-1 text-xs font-semibold uppercase bg-[#bdbcbc] border border-[#838181]"
           >
-            deposit
+            {isLoading ? "Converting..." : `Deposing ${depositValue}`}
           </button>
         </div>
         <div className="flex flex-row gap-1">
@@ -94,7 +95,7 @@ const AccountOpration = () => {
         <div className="flex flex-row gap-1">
           <Input
             label={"Request Loan"}
-            id={"RequestLoan"}
+            id={"RequestLoanAmount"}
             value={loanPurpose}
             setValue={setLoanPurpose}
             type={"number"}
@@ -102,7 +103,7 @@ const AccountOpration = () => {
             className="placeholder-black placeholder-opacity-100"
           />
           <Input
-            id="RequestLoan"
+            id="RequestLoanPurpose"
             type="text"
             value={loanAmout}
             setValue={setLoanAmount}
