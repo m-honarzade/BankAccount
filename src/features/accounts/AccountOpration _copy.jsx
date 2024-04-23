@@ -49,8 +49,8 @@ const AccountOpration = () => {
             label="Deposit"
             id="Deposit"
             type="number"
-            value={depositValue}
-            setValue={setDepositValue}
+            // value={depositValue}
+            // setValue={setDepositValue}
           />
           <select
             value={currency}
