@@ -17,15 +17,14 @@ const AccountOpration = () => {
 
   // console.log(depo);
 
-  const depositHandler = (depositValue, currency) => {
+  function depositHandler(depositValue, currency) {
     if (!depositValue) return null;
     dispatch(deposit(depositValue, currency));
     setDepositValue("");
     setCurrency("USD");
-  };
+  }
   const withdrawHandler = (withdrawValue) => {
     if (!withdrawValue) return;
-
     dispatch(withdraw(withdrawValue));
     setWithdrawValue("");
   };
